@@ -2,7 +2,7 @@ import random
 from music21 import *
 import json
 majorminorinput = 'major' # or 'major'
-extender = 6
+extender = 1
 melodyLength = 16 * extender # Augmant latter number to augment piece length (one augmantation adds 4 bars (=16 beats))
 
 HrChArray = ["C","Am","G","Em","D","Bm","A","F#m","E","C#m","B","G#m","F#","Ebm","Db","Bbm","Ab","Fm","Eb","Cm","Bb","Gm","F","Dm","C","Am","G","Em","D"]
@@ -339,6 +339,18 @@ data = {
     "note_lengths": FinalMeloRhArray
   }
 }
+FinalMeloRhArray = [float(i) for i in FinalMeloRhArray]
+FinalBassRhArray = [float(i) for i in FinalBassRhArray]
 
-json_string = json.dumps(data)
-print(json_string)
+lines = [ str(FinalChArray) +'@=> int ChordNotes[][];', str(FinalChRhArray)+'@=> int chordLength[];', str(FinalBassNoteArray)+'@=> int BassNotes[];', str(FinalMeloRhArray)+'@=> float MelodyLength[];', str(FinalMeloNoteArray)+'@=> int MelodyNotes[];',str(FinalBassRhArray)+'@=> float BassLength[];',str(extender)+'=> int extender;']
+open('MusicArray.ck', 'w').close()
+
+with open('MusicArray.ck', 'w') as f:
+    for line in lines:
+      f.write(line)
+      f.write('\n')
+
+
+
+#json_string = json.dumps(data)
+#print(json_string)

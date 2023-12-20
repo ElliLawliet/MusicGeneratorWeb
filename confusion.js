@@ -56,20 +56,6 @@ app.get("/generate-music-notation", (req, res) => {
   res.json(generateMusicNotation());
 });
 
-const convertToMidi = () => {
-  const command = `python ${__dirname}/convert_to_midi.py output_music_notation.json`; // Needs to have python3 installed
-  exec(command, (err, stdout, stderr) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(stdout);
-  });
-};
-app.get("/convert-to-midi", (req, res) => {
-  convertToMidi();
-  res.send("cool");
-});
 
 const playMidi = (midiFile = "melody.mid", env = "none") => {
   const command = `chuck ${__dirname}/play_midi.ck:${midiFile}:${env}`; // Needs to have python3 installed
