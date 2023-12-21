@@ -343,8 +343,8 @@ FinalMeloRhArray = [float(i) for i in FinalMeloRhArray]
 FinalBassRhArray = [float(i) for i in FinalBassRhArray]
 
 lines = [ str(FinalChArray) +'@=> int ChordNotes[][];', str(FinalChRhArray)+'@=> int chordLength[];', str(FinalBassNoteArray)+'@=> int BassNotes[];', str(FinalMeloRhArray)+'@=> float MelodyLength[];', str(FinalMeloNoteArray)+'@=> int MelodyNotes[];',str(FinalBassRhArray)+'@=> float BassLength[];',str(extender)+'=> int extender;']
-open('MusicArray.ck', 'w').close()
 
+open('MusicArray.ck', 'w').close()
 with open('MusicArray.ck', 'w') as f:
     for line in lines:
       f.write(line)
